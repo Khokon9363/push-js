@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push js</title>
+    <script src="bin/push.js"></script>
+</head>
+<body>
+
+    <button onclick="notify()">Notify !</button>
+    <button onclick="check()">Check !</button>
+    
+    <script>
+        function notify(){
+            Push.create("Hello world !", {
+                body: "This is body !",
+                icon: '/icon.png',
+                timeout: 4000,
+                onClick: () => {
+                    window.focus()
+                    this.close()
+                }
+            })
+        }
+
+        function check(){
+            console.log(Push.Permission.has())
+        }
+    </script>
+</body>
+</html>
